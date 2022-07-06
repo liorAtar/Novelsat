@@ -16,8 +16,8 @@ const CreateToDoItem = ({ todoList, setTodoList }) => {
             task: textValue,
             isCompleted: false
         }
-        
         setTodoList(prev => [...prev, newTodo]);  
+        setTextValue("");
     }
 
     return (
@@ -26,6 +26,7 @@ const CreateToDoItem = ({ todoList, setTodoList }) => {
                 label="To Do"
                 variant="outlined"
                 className="task-text"
+                value={textValue}
                 onChange={(e) => setTextValue(e.target.value)}
             />
             <Button

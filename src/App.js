@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-// import ToDoItem from './Components/ToDoItem';
 import CreateToDoItem from './Components/CreateToDoItem';
+import FilterList from './Components/FilterList';
 import ToDoList from './Components/ToDoList';
 import './App.css';
 
@@ -19,10 +19,13 @@ const App = () => {
     }
   ]);
 
+  const [filteredList, setFilteredList] = useState(todoList);
+
   return (
     <div className="App">
-      <CreateToDoItem todoList={todoList} setTodoList={setTodoList}/>
-      <ToDoList todoList={todoList} setTodoList={setTodoList}/>
+      <CreateToDoItem todoList={todoList} setTodoList={setTodoList} />
+      <FilterList todoList={todoList} setFilteredList={setFilteredList}/>
+      <ToDoList todoList={todoList} filteredList={filteredList} setTodoList={setTodoList}/>
     </div>
   );
 }
