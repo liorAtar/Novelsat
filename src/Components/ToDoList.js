@@ -2,14 +2,14 @@ import React from "react";
 import List from '@mui/material/List';
 import ToDoItem from "./ToDoItem";
 
-const ToDoList = ({ todoList, setTodoList }) => {
+const ToDoList = ({ todoList, setTodoList, filteredList }) => {
     
     /**
      * Delete the requested todo item
      * @param {*} todoItem 
      */
     const deleteItem = (todoItem) => {
-        const updatedList = todoList.filter(
+        let updatedList = todoList.filter(
             item => item.id !== todoItem.id
         );
         setTodoList(updatedList);
@@ -21,19 +21,19 @@ const ToDoList = ({ todoList, setTodoList }) => {
      * @param {*} todoItem 
      */
     const handleIsCompletedChanged = (e, todoItem) => {
-        const itemToUpdateIndex = todoList.findIndex(
+        let itemToUpdateIndex = todoList.findIndex(
             item => item.id === todoItem.id
         );
 
-        const updatedList = todoList;
-        updatedList[itemToUpdateIndex].isCompleted = e.target.checked;
+        let newList = [...todoList];
+        newList[itemToUpdateIndex].isCompleted = e.target.checked;
 
-        setTodoList(updatedList);
+        setTodoList(newList);
     }
 
     return (
         <List>
-            {todoList.map(todoItem =>
+            {filteredList.map(todoItem =>
                 <ToDoItem
                     key={todoItem.id}
                     todoItem={todoItem}
