@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
-import Stack from '@mui/material/Stack';
-
 import '../Css/CreateToDoItemStyle.css';
 
 const CreateToDoItem = ({ todoList, setTodoList }) => {
@@ -11,13 +9,17 @@ const CreateToDoItem = ({ todoList, setTodoList }) => {
     const [textValue, setTextValue] = useState("");
 
     const createNewTodo = () => {
-        const newTodo = {
-            id: (todoList[todoList.length - 1].id + 1),
-            task: textValue,
-            isCompleted: false
+        if (textValue !== "") {
+            const newTodo = {
+                id: (todoList[todoList.length - 1].id + 1),
+                task: textValue,
+                isCompleted: false
+            }
+            setTodoList(prev => [...prev, newTodo]);  
+            setTextValue("");
+        } else {
+            alert("To Do is empty!")
         }
-        setTodoList(prev => [...prev, newTodo]);  
-        setTextValue("");
     }
 
     return (

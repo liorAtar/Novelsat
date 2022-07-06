@@ -50,7 +50,9 @@ const FilterList = ({ todoList, setFilteredList }) => {
     return (
         <div style={{ margin: '20px' }}>
             <FormControl fullWidth>
-                <InputLabel>filter</InputLabel>
+                <InputLabel>
+                    filter
+                </InputLabel>
                 <Select
                     value={filter}
                     label="Filter"
