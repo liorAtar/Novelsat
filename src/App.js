@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 // import ToDoItem from './Components/ToDoItem';
+import CreateToDoItem from './Components/CreateToDoItem';
 import ToDoList from './Components/ToDoList';
 import './App.css';
 
@@ -20,6 +21,7 @@ const App = () => {
 
   return (
     <div className="App">
+      <CreateToDoItem todoList={todoList} setTodoList={setTodoList}/>
       <ToDoList todoList={todoList} setTodoList={setTodoList}/>
     </div>
   );
